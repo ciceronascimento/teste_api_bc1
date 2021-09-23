@@ -1,8 +1,8 @@
-import * as GETModels from '../requests/GETContracts.request';
+import * as GETContracts from '../requests/GETContracts.request';
 
 describe('GET Contracts', () => {
     it('Listar todos os modelos de uma organização com modelos criados', () => {
-        GETModels.retornarContrato().should((response) => {
+        GETContracts.retornarContrato().should((response) => {
             /* cy.log(response.status)
             cy.log(response.statusText)
             cy.log(response.body) */
@@ -11,7 +11,7 @@ describe('GET Contracts', () => {
         })
     });
     it('Listar todos os modelos de uma organização com tokens inválidos', () => {
-        GETModels.retornarContratoComTokenInválido().should((response) => {
+        GETContracts.retornarContratoComTokenInválido().should((response) => {
             expect(response.status).to.eq(401);
             expect(response.body.result.code).to.eq("TOKEN_INVALIDO");
             expect(response.body.result.message).to.eq("Preencha o cabeçalho Authorization com um token válido!");          

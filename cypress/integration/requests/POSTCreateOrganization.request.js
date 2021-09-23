@@ -1,13 +1,14 @@
 /// <reference types="cypress" />
 
-const payloadAddOrg = require('../payloads/add-organization.json');
+//const payloadAddOrg = require('../payloads/add-organization.json');
+const data = require('../payloads/add-data.json');
 
 function addOrganization(){
     return cy.request({
         method: 'POST',
         url: 'create_organization',
         failOnStatusCode: false,
-        body: payloadAddOrg
+        body: data['add-organization']
     })
 }
 function addOrganizationSemParemetro(){

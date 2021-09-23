@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
-const payloadAddToken = require('../payloads/token-header.json');
+//const payloadAddToken = require('../payloads/token-header.json');
+const token = require('../payloads/token.json');
 
 function retornarModelo(){
     // cy.request - client http
@@ -8,7 +9,7 @@ function retornarModelo(){
         method: 'POST',
         url: 'get_models',
         failOnStatusCode: false,
-        headers: payloadAddToken
+        headers: token['token-header']
     })
 }
 function retornarModeloComTokenInválido(){

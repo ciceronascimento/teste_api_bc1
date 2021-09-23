@@ -1,4 +1,0 @@
-{
-    "description": "Modelo de teste com cinco atributos",
-    "attributes": "title; sector; place; hashDocument; timestamp"
-}

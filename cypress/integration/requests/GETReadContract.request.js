@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
-const payloadAddToken = require('../payloads/token-header.json');
+//const payloadAddToken = require('../payloads/token-header.json');
+const token = require('../payloads/token.json');
 const payloadReadContract = require('../payloads/read-doc.json');
 
 
@@ -10,7 +11,7 @@ function retornarDocumentoDoContratato(){
         method: 'POST',
         url: 'read_contract',
         failOnStatusCode: false,
-        headers: payloadAddToken,
+        headers: token['token-header'],
         body: payloadReadContract
     })
 }
@@ -32,7 +33,7 @@ function retornarDocumentoDoContratatoComParametrosVazios(){
         method: 'POST',
         url: 'read_contract',
         failOnStatusCode: false,
-        headers: payloadAddToken,
+        headers: token['token-header'],
         body: {
             "idContract": "",
             "idDocument": ""
@@ -45,7 +46,7 @@ function retornarDocumentoDoContratatoSemParametros(){
         method: 'POST',
         url: 'read_contract',
         failOnStatusCode: false,
-        headers: payloadAddToken,
+        headers: token['token-header'],
         body: {}
     })
 }

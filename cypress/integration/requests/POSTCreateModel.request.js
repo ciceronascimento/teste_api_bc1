@@ -1,15 +1,17 @@
 /// <reference types="cypress" />
 
-const payloadAddModel = require('../payloads/add-model.json');
-const payloadAddToken = require('../payloads/token-header.json');
+//const payloadAddModel = require('../payloads/add-model.json');
+const data = require('../payloads/add-data.json')
+//const payloadAddToken = require('../payloads/token-header.json');
+const token = require('../payloads/token.json');
 
 function criarModel(){
     return cy.request({
         method: 'POST',
         url: 'create_model',
         failOnStatusCode: false,
-        headers:payloadAddToken,
-        body: payloadAddModel
+        headers:token['token-header'],
+        body: data['add-model']
     })
 }
 function criarModelComTokenInvalido(){
@@ -20,7 +22,7 @@ function criarModelComTokenInvalido(){
         headers: {
             "Authorization": "JWT eyJ0e32XAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Njg0LCJrZXkiOiJiZnhhbGtyMnF3eGI4IiwiaWRfb3JnIjo2ODR9.W3xpKKIH9UQvN82AZDD5hP3bXBq-sM2y1HX0pj9s5bM"
         },
-        body: payloadAddModel
+        body: data['add-model']
     })
 }
 function criarModelSemParemetro(){
@@ -28,7 +30,7 @@ function criarModelSemParemetro(){
         method: 'POST',
         url: 'create_model',
         failOnStatusCode: false,
-        headers: payloadAddToken,
+        headers: token['token-header'],
         body: {}
     })
 }
@@ -37,7 +39,7 @@ function gerarTokenComParametrosVazios(){
         method: 'POST',
         url: 'token',
         failOnStatusCode: false,
-        headers: payloadAddToken,
+        headers: token['token-header'],
         body: {
             "description": "",
             "attributes": ""
