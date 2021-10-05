@@ -4,7 +4,6 @@
 const token = require('../payloads/token.json');
 
 function retornarContrato(){
-    // cy.request - client http
     return cy.request({
         method: 'POST',
         url: 'get_contracts',
@@ -13,7 +12,6 @@ function retornarContrato(){
     })
 }
 function retornarContratoComTokenInválido(){
-    // cy.request - client http
     return cy.request({
         method: 'POST',
         url: 'get_contracts',

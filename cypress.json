@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://152.67.47.208:3001/",
+  "baseUrl": "http://152.67.47.208/",
   "projectId": "ordo9r",
   "reporter": "cypress-mochawesome-reporter",
   "reporterOptions": {
@@ -9,5 +9,6 @@
     "embeddedScreenshots": true,
     "inlineAssets": true
   },
-  "video": false
+  "video": false,
+  "responseTimeout": 300000
 }

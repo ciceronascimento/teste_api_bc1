@@ -1,9 +1,9 @@
-import * as ReadContract from '../requests/GETReadContract.request';
+import * as ReadContract from '../requests/GETReadContractModels.request';
 const data = require('../payloads/add-data.json')
 
-describe('GET Read Contract', () => {
+describe('GET Read Contract Models *****', () => {
     it('Listar documento criado em um contrato', () => {
-        ReadContract.retornarDocumentoDoContratato().should((response) => {
+        ReadContract.retornarDocumentoDoContrato().should((response) => {
             expect(response.status).to.equal(200);
             expect(response.body.result.blockchain).to.equal("0");
             expect(response.body.result.result.hashDoc).to.equal(data['add-doc'].value[1]);
@@ -38,4 +38,5 @@ describe('GET Read Contract', () => {
             expect(response.body.result.message).to.eq("Preencha todos os campos!");
         })
     });
+
 });

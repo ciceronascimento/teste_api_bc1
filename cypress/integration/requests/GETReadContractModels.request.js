@@ -5,7 +5,7 @@ const token = require('../payloads/token.json');
 const payloadReadContract = require('../payloads/read-doc.json');
 
 
-function retornarDocumentoDoContratato(){
+function retornarDocumentoDoContrato(){
 
     return cy.request({
         method: 'POST',
@@ -19,7 +19,7 @@ function retornarDocumentoDoContratatoComTokenInválido(){
 
     return cy.request({
         method: 'POST',
-        url: 'read_contract',
+        url: 'read_contract_models',
         failOnStatusCode: false,
         headers: {
             "Authorization": "JWT qweyJ0eXAiOi213123JKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Njg0LCJrZXkiOiJiZnhhbGtyMnF3eGI4IiwiaWRfb3JnIjo2ODR9.W3xpKKIH9UQvN82AZDD5hP3bXBq-sM2y1HX0pj9s5bM"
@@ -31,7 +31,7 @@ function retornarDocumentoDoContratatoComParametrosVazios(){
 
     return cy.request({
         method: 'POST',
-        url: 'read_contract',
+        url: 'read_contract_models',
         failOnStatusCode: false,
         headers: token['token-header'],
         body: {
@@ -44,7 +44,7 @@ function retornarDocumentoDoContratatoSemParametros(){
     // cy.request - client http
     return cy.request({
         method: 'POST',
-        url: 'read_contract',
+        url: 'read_contract_models',
         failOnStatusCode: false,
         headers: token['token-header'],
         body: {}
@@ -52,7 +52,7 @@ function retornarDocumentoDoContratatoSemParametros(){
 }
 
 
-export { retornarDocumentoDoContratato };
+export { retornarDocumentoDoContrato };
 export { retornarDocumentoDoContratatoComTokenInválido };
 export { retornarDocumentoDoContratatoComParametrosVazios };
 export { retornarDocumentoDoContratatoSemParametros };

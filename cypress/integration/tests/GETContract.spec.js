@@ -3,9 +3,6 @@ import * as GETContracts from '../requests/GETContracts.request';
 describe('GET Contracts', () => {
     it('Listar todos os modelos de uma organização com modelos criados', () => {
         GETContracts.retornarContrato().should((response) => {
-            /* cy.log(response.status)
-            cy.log(response.statusText)
-            cy.log(response.body) */
             expect(response.status).to.equal(200);
             expect(response.body.results).to.be.not.null;
         })

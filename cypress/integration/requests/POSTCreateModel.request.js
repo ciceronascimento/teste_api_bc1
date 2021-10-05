@@ -25,7 +25,7 @@ function criarModelComTokenInvalido(){
         body: data['add-model']
     })
 }
-function criarModelSemParemetro(){
+function criarModelSemParametro(){
     return cy.request({
         method: 'POST',
         url: 'create_model',
@@ -37,7 +37,7 @@ function criarModelSemParemetro(){
 function gerarTokenComParametrosVazios(){
     return cy.request({
         method: 'POST',
-        url: 'token',
+        url: 'create_model',
         failOnStatusCode: false,
         headers: token['token-header'],
         body: {
@@ -47,7 +47,40 @@ function gerarTokenComParametrosVazios(){
     })
 }
 
+
+function criarModelCamposDuplicados(){
+    return cy.request({
+        method: 'POST',
+        url: 'create_model',
+        failOnStatusCode: false,
+        headers: token['token-header'],
+        body: {
+            "description": "Modelo de teste com cinco atributos",
+            "attributes": "idInternal;hashDoc;idObra;idObra;idAuthor;teste1;teste2",
+            "attrNotNull": "idObra;idAuthor;teste2"
+        }
+    })
+}
+
+function criarModelAtributosOrdemErrada(){
+    return cy.request({
+        method: 'POST',
+        url: 'create_model',
+        failOnStatusCode: false,
+        headers: token['token-header'],
+        body: {
+            "description": "Modelo de teste com cinco atributos",
+            "attributes": "idObra;idAuthor;teste1;teste2;idInternal;hashDoc",
+            "attrNotNull": "idObra;idAuthor;teste2"
+        }
+    })
+}
+
+
+
 export { criarModel };
 export { criarModelComTokenInvalido };
-export { criarModelSemParemetro };
+export { criarModelSemParametro };
 export { gerarTokenComParametrosVazios };
+export { criarModelCamposDuplicados };
+export { criarModelAtributosOrdemErrada };

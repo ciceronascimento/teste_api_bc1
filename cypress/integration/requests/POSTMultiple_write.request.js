@@ -8,34 +8,40 @@ const token = require('../payloads/token.json');
 function criarDocumento(){
     return cy.request({
         method: 'POST',
-        url: 'write_contract',
+        url: 'multiple_write',
         failOnStatusCode: false,
         headers:token['token-header'],
-        body: data['add-doc']
+        body: data['add-doc-multi']
     })
 }
 
 function criarDocumentoComTokenInvalido(){
     return cy.request({
         method: 'POST',
-        url: 'write_contract',
+        url: 'multiple_write',
         failOnStatusCode: false,
         headers: {
             "Authorization": "JWT eyJ0e31232XAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Njg0LCJrZXkiOiJiZnhhbGtyMnF3eGI4IiwiaWRfb3JnIjo2ODR9.W3xpKKIH9UQvN82AZDD5hP3bXBq-sM2y1HX0pj9s5bM"
         },
-        body: data['add-doc']
+        body: data['add-doc-multi']
     })
 }
 
 function criarDocumentoComParemetrosVazios(){
     return cy.request({
         method: 'POST',
-        url: 'write_contract',
+        url: 'multiple_write',
         failOnStatusCode: false,
         headers:token['token-header'],
         body: {
             "idContract": "",
-            "value" : [""]
+            "valueAttributes": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "notFaultTolerance": true
         }
     })
 }
@@ -43,23 +49,26 @@ function criarDocumentoComParemetrosVazios(){
 function criarDocumentoSemParemetrosVazios(){
     return cy.request({
         method: 'POST',
-        url: 'write_contract',
+        url: 'multiple_write',
         failOnStatusCode: false,
         headers:token['token-header'],
         body: {}
     })
 }
 
-//testarcontratoinexistente: O contrato de id extnc78cku5dj89r é inexistente
+
 function criarDocumentoAtributosInsuficientes(){
     return cy.request({
         method: 'POST',
-        url: 'write_contract',
+        url: 'multiple_write',
         failOnStatusCode: false,
         headers:token['token-header'],
         body: {
-            "idContract": "3b6car3qkvku7mk7rr",
-            "value" : ["Texto gerado automaticamente para o documento criado","Qualidade","Blockchain One", "askdpokasopdkopqwuie1231wqke"]
+            "idContract": "extnc78cku5dj89r;extnc78cku5djzoh",
+            "valueAttributes": [
+              "idInternalExample"
+            ],
+            "notFaultTolerance": true
         }
     })
 }
@@ -68,16 +77,36 @@ function criarDocumentoAtributosInsuficientes(){
 function criarDocumentoAtributosExcedentes(){
     return cy.request({
         method: 'POST',
-        url: 'write_contract',
+        url: 'multiple_write',
         failOnStatusCode: false,
         headers:token['token-header'],
         body: {
-            "idContract": "3b6car3qkvku7mk7rr",
-            "value" : ["Texto gerado automaticamente para o documento criado","Qualidade","Blockchain One", "askdpokasopdkopqwuie1231wqke", 30000, "oioiioi", "uhjgsduhbvsadbsa"]
+            "idContract": "extnc78cku5dj89r;extnc78cku5djzoh",
+            "valueAttributes": [
+              "idInternalExample",
+              "hashDocExample",
+              "titleExample",
+              "dataExample",
+              "dataExample2",
+              "dataExample3"
+            ],
+            "notFaultTolerance": true
         }
     })
 }
 
+
+
+// "add-doc-mult": {
+//     "idContract": "3b6car3qkvku7mk7rr",
+//     "value": [
+//       "title01",
+//       "sector01",
+//       "place01",
+//       "hashDocument01",
+//       10000000
+//     ]
+// },
 
 
 

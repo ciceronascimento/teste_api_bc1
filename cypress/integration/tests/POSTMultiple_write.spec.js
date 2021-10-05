@@ -1,8 +1,8 @@
-import * as PostWriteContract from '../requests/POSTWriteContract.request';
+import * as POSTMultiple_Write from '../requests/POSTMultiple_write.request';
 
-context('POST Write Contract', () => {
+context('POST Multiple Write', () => {
     it('Criar um documento para um contrato', () => {
-        PostWriteContract.criarDocumento().should((response) => {
+        POSTMultiple_Write.criarDocumento().should((response) => {
             expect(response.status).to.eq(200);
             expect(response.body.result.returnCode).to.eq("success");
             expect(response.body.result.blockNumber).not.be.null;
@@ -12,14 +12,14 @@ context('POST Write Contract', () => {
         })
     });
     it('Criar um documento para um contrato com token inválido', () => {
-        PostWriteContract.criarDocumentoComTokenInvalido().should((response) => {
+        POSTMultiple_Write.criarDocumentoComTokenInvalido().should((response) => {
             expect(response.status).to.eq(401);
             expect(response.body.result.code).to.eq("TOKEN_INVALIDO");
             expect(response.body.result.message).to.eq("Preencha o cabeçalho Authorization com um token válido!");
         })
     });
     it('Criar um documento para um contrato com parametros vazio', () => {
-        PostWriteContract.criarDocumentoComParemetrosVazios().should((response) => {
+        POSTMultiple_Write.criarDocumentoComParemetrosVazios().should((response) => {
             expect(response.status).to.eq(401);
             expect(response.body.result.code).to.eq("CAMPO_VAZIO");
             expect(response.body.result.message).to.eq("Preencha todos os campos!");
@@ -27,7 +27,7 @@ context('POST Write Contract', () => {
         })
     });
     it('Criar um documento para um contrato sem parametros', () => {
-        PostWriteContract.criarDocumentoSemParemetrosVazios().should((response) => {
+        POSTMultiple_Write.criarDocumentoSemParemetrosVazios().should((response) => {
             expect(response.status).to.eq(401);
             expect(response.body.result.code).to.eq("CAMPO_VAZIO");
             expect(response.body.result.message).to.eq("Preencha todos os campos!");
@@ -36,7 +36,7 @@ context('POST Write Contract', () => {
     }); 
 
     it('Criar um documento com atributos insuficientes', () => {
-        PostWriteContract.criarDocumentoAtributosInsuficientes().should((response) => {
+        POSTMultiple_Write.criarDocumentoAtributosInsuficientes().should((response) => {
             expect(response.status).to.eq(400);
             expect(response.body.result.returnCode).to.eq("failure");
             expect(response.body.result.message).to.eq("O vetor value possui uma quantidade inconsistente de atributos");
@@ -44,7 +44,7 @@ context('POST Write Contract', () => {
     });
     
     it('Criar um documento com atributos excedentes', () => {
-        PostWriteContract.criarDocumentoAtributosExcedentes().should((response) => {
+        POSTMultiple_Write.criarDocumentoAtributosExcedentes().should((response) => {
             expect(response.status).to.eq(400);
             expect(response.body.result.returnCode).to.eq("failure");
             expect(response.body.result.message).to.eq("O vetor value possui uma quantidade inconsistente de atributos");

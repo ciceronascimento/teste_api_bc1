@@ -3,7 +3,7 @@
 //const payloadAddOrg = require('../payloads/add-organization.json');
 const data = require('../payloads/add-data.json');
 
-function addOrganization(){
+function addOrganizacao(){
     return cy.request({
         method: 'POST',
         url: 'create_organization',
@@ -11,26 +11,57 @@ function addOrganization(){
         body: data['add-organization']
     })
 }
-function addOrganizationSemParemetro(){
+
+function addOrganizacaoJaCadastrada(){
+    return cy.request({
+        method: 'POST',
+        url: 'create_organization',
+        failOnStatusCode: false,
+        body: data['add-organization']
+    })
+}
+
+function addOrganizacaoSemParametro(){
     return cy.request({
         method: 'POST',
         url: 'create_organization',
         failOnStatusCode: false,
     })
 }
-function addOrganizationComParametroVazio(){
+function addOrganizacaoComParametroVazio(){
     return cy.request({
         method: 'POST',
         url: 'create_organization',
         failOnStatusCode: false,
         body: {
-            "name": "Org Teste",
-          "address": ""
+            "nameOrg": "",
+            "emailOrg": "",
+            "productNameOrg": "",
+            "nameResponsible": "",
+            "cpfResponsible": "",
+            "cnpjOrg": ""
+        }
+    })  
+}
+function addOrganizacaoFormatacaoErrada(){
+    return cy.request({
+        method: 'POST',
+        url: 'create_organization',
+        failOnStatusCode: false,
+        body: {
+            "nameOrg": "Testes uahuahhuah",
+            "emailOrg": "rafaelpf9gmailcom",
+            "productNameOrg": "uahuahuha",
+            "nameResponsible": "auhauhuaha",
+            "cpfResponsible": "697475764",
+            "cnpjOrg": "9976500117"
         }
     })
 }
 
 
-export { addOrganization };
-export { addOrganizationSemParemetro };
-export { addOrganizationComParametroVazio };
+export { addOrganizacao };
+export { addOrganizacaoFormatacaoErrada };
+export { addOrganizacaoSemParametro };
+export { addOrganizacaoComParametroVazio };
+export { addOrganizacaoJaCadastrada };

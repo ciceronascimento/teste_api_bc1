@@ -18,7 +18,7 @@ context('POST Create Model', () => {
         })
     });
     it('Criar um modelo sem parametros insuficientes', () => {
-        POSTCreateModel.criarModelSemParemetro().should((response) => {
+        POSTCreateModel.criarModelSemParametro().should((response) => {
             expect(response.status).to.eq(401);
             expect(response.body.result.code).to.eq("CAMPO_VAZIO");
             expect(response.body.result.message).to.eq("Preencha todos os campos!");
@@ -31,4 +31,28 @@ context('POST Create Model', () => {
             expect(response.body.result.message).to.eq("Preencha todos os campos!");
         })
     });
+
+    it('Criar um modelo com campos duplicados', () => {
+        POSTCreateModel.criarModelCamposDuplicados().should((response) => {
+            expect(response.status).to.eq(401);
+            expect(response.body.result.code).to.eq("CAMPOS_DUPLICADOS");
+            // expect(response.body.result.message).to.eq("Preencha todos os campos!");
+        })
+    });
+
+    it('Criar um modelo com atributos na ordem errada', () => {
+        POSTCreateModel.criarModelAtributosOrdemErrada().should((response) => {
+            expect(response.status).to.eq(400);
+            expect(response.body.result.code).to.eq("CAMPOS_INCONSISTENTES");
+            expect(response.body.result.message).to.eq("Os primeiros elementos do modelo devem ser ‘idInternal;hashDoc’, respectivamente.");
+        })
+    });
 });
+
+// export { criarModel };
+// export { criarModelComTokenInvalido };
+// export { criarModelSemParametro };
+// export { gerarTokenComParametrosVazios };
+// export { criarModelCamposDuplicados };
+// export { criarModelAtributosOrdemErrada };
+

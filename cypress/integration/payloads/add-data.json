@@ -1,38 +1,62 @@
 {
     "add-doc": {
-        "idContract": "3b6car11cksol3x46",
-        "value" : ["Texto gerado automaticamente para o documento criado","Qualidade","Blockchain One", "askdpokasopdkopqwuie1231wqke", 30000]
+        "idContract": "3b6car40oxkue7y64e",
+        "value" : ["Texto gerado automaticamente para o documento criado","Qualidade","Blockchain One", "askdpokasopdkopqwuie1231wqke", 30000, "oioiioi"]
     },
 
     "add-model": {
         "description": "Modelo de teste com cinco atributos",
-        "attributes": "title; sector; place; hashDocument; timestamp"
+        "attributes": "idInternal;hashDoc;idObra;idAuthor;teste1;teste2",
+        "attrNotNull": "idObra;idAuthor;teste2"
+    },
+
+    "add-doc-multi": {
+        "idContract": ["3b6car40oxkue7y64e",
+                       "3b6car40oxkue7yczr"],
+        "valueAttributes": [
+            "idInternal",
+            "hashDoc",
+            "idObra",
+            "idAuthor",
+            "teste1",
+            "teste2"
+          ],
+          "notFaultTolerance": true
     },
 
     "add-organization" : {
-        "name": "Org Teste",
-        "address": "4287925"
-    },
+        "nameOrg": "Testes321",
+        "emailOrg": "antoniociceero@gmail.com",
+        "productNameOrg": "ProductExamplee hehehe",
+        "nameResponsible": "ResponsibleExamplee gwgwgw",
+        "cpfResponsible": "716.449.290-58",
+        "cnpjOrg": "00.736.409/0001-70"
+      },
 
     "add-contract-zero": {
         "blockchain":"0",
-        "model":"3b6car11cksokl5l4"
+        "model":"3b6car40oxkue6uk1e"
     },
     "add-contract-um": {
         "blockchain":"1",
-        "model":"3b6car11cksokl5l4"
+        "model":"3b6car40oxkue6uk1e"
     },
     "add-contract-dois": {
         "blockchain":"2",
-        "model":"3b6car11cksokl5l4"
+        "model":"3b6car40oxkue6uk1e"
     },
     "add-contract-tres": {
         "blockchain":"3",
-        "model":"3b6car11cksokl5l4"
+        "model":"3b6car40oxkue6uk1e"
     },
     "add-contract-quatro": {
         "blockchain":"4",
-        "model":"3b6car11cksokl5l4"
+        "model":"3b6car40oxkue6uk1e"
+    },
+
+    "read-multi": {
+        "idDocument": "3b6car41bbkueeeq81",
+        "litDocuments": true
     }
 
 }

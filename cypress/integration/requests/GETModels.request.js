@@ -24,5 +24,6 @@ function retornarModeloComTokenInválido(){
     })
 }
 
+
 export { retornarModelo };
 export { retornarModeloComTokenInválido };
